@@ -1,0 +1,26 @@
+{
+    "name": "pingcheng/api-response",
+    "description": "Generate API response in JSON format",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^9.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ping Cheng",
+            "email": "ping.che@hotmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "PingCheng\\ApiResponse\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
