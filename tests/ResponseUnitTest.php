@@ -2,6 +2,7 @@
 
 
 use PHPUnit\Framework\TestCase;
+use PingCheng\ApiResponse\HttpStatusCode;
 use PingCheng\ApiResponse\Payload;
 use PingCheng\ApiResponse\Response;
 
@@ -23,8 +24,8 @@ class ResponseUnitTest extends TestCase
 			'data' => 'data',
 			'message' => 'message',
 		];
-		$jsonString = json_encode(array_merge($data, ['status_code' => 200]), JSON_THROW_ON_ERROR);
-		$response = Response::create(200, Payload::create($data));
+		$jsonString = json_encode(array_merge($data, ['status_code' => HttpStatusCode::OK]), JSON_THROW_ON_ERROR);
+		$response = Response::create(HttpStatusCode::OK, Payload::create($data));
 		$this->assertEquals($jsonString, $response->toJson());
 	}
 }
