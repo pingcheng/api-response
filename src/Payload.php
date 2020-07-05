@@ -12,6 +12,20 @@ class Payload
 	private array $payload = [];
 
 	/**
+	 * Create a Payload object and fill the payload content is provided.
+	 *
+	 * @param array|null $payload
+	 *
+	 * @return Payload
+	 */
+	public static function create(?array $payload = []): Payload
+	{
+		$self = new self();
+		$self->bulkSetPayload($payload ?? []);
+		return $self;
+	}
+
+	/**
 	 * Set the payload by replacing it.
 	 *
 	 * @param string $key

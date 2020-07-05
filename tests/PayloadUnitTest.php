@@ -45,4 +45,20 @@ class PayloadUnitTest extends TestCase
 		$this->assertEquals('aa', $data['a']);
 		$this->assertEquals('b', $data['b']);
 	}
+
+	public function testCreateWithNullWillReturnEmptyPayloadData(): void
+	{
+		$payload = Payload::create();
+		$this->assertEmpty($payload->getPayload());
+	}
+
+	public function testCreateWithArrayWillPreFillPayloadData(): void
+	{
+		$data = [
+			'a' => 'a',
+			'b' => 'b',
+		];
+		$payload = Payload::create($data);
+		$this->assertEquals($data, $payload->getPayload());
+	}
 }

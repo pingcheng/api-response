@@ -20,6 +20,24 @@ class Response implements Jsonifiable
 	 */
 	private Payload $payload;
 
+	/**
+	 * Create a Response object by status code and payload.
+	 *
+	 * @param int $statusCode
+	 * @param Payload $payload
+	 *
+	 * @return Response
+	 */
+	public static function create(int $statusCode, Payload $payload): Response
+	{
+		return new self($statusCode, $payload);
+	}
+
+	/**
+	 * Output the content to JSON format
+	 *
+	 * @return string
+	 */
 	public function toJson(): string
 	{
 		try {
@@ -29,5 +47,17 @@ class Response implements Jsonifiable
 		} catch (JsonException $e) {
 			return '{}';
 		}
+	}
+
+	/**
+	 * Hidden Response constructor.
+	 *
+	 * @param int $statusCode
+	 * @param Payload $payload
+	 */
+	protected function __construct(int $statusCode, Payload $payload)
+	{
+		$this->statusCode = $statusCode;
+		$this->payload = $payload;
 	}
 }
